@@ -1,0 +1,412 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --primary: #00FF41;
+  --primary-foreground: #0a0a0a;
+  --sidebar-primary: #B300FF;
+  --sidebar-primary-foreground: #00FF41;
+  --chart-1: #00FFFF;
+  --chart-2: #FF006E;
+  --chart-3: #B300FF;
+  --chart-4: #00FF41;
+  --chart-5: #FFFF00;
+  --radius: 0.25rem;
+  --background: #0a0a0a;
+  --foreground: #00FF41;
+  --card: #1a1a2e;
+  --card-foreground: #00FF41;
+  --popover: #0a0a0a;
+  --popover-foreground: #00FF41;
+  --secondary: #B300FF;
+  --secondary-foreground: #FFFFFF;
+  --muted: #16213e;
+  --muted-foreground: #00FFFF;
+  --accent: #FF006E;
+  --accent-foreground: #FFFFFF;
+  --destructive: #FF0000;
+  --destructive-foreground: #FFFFFF;
+  --border: #00FF41;
+  --input: #1a1a2e;
+  --ring: #00FFFF;
+  --sidebar: #0a0a0a;
+  --sidebar-foreground: #00FF41;
+  --sidebar-accent: #B300FF;
+  --sidebar-accent-foreground: #00FF41;
+  --sidebar-border: #00FF41;
+  --sidebar-ring: #00FFFF;
+}
+
+.dark {
+  --primary: #00FF41;
+  --primary-foreground: #0a0a0a;
+  --sidebar-primary: #B300FF;
+  --sidebar-primary-foreground: #00FF41;
+  --background: #0a0a0a;
+  --foreground: #00FF41;
+  --card: #1a1a2e;
+  --card-foreground: #00FF41;
+  --popover: #0a0a0a;
+  --popover-foreground: #00FF41;
+  --secondary: #B300FF;
+  --secondary-foreground: #FFFFFF;
+  --muted: #16213e;
+  --muted-foreground: #00FFFF;
+  --accent: #FF006E;
+  --accent-foreground: #FFFFFF;
+  --destructive: #FF0000;
+  --destructive-foreground: #FFFFFF;
+  --border: #00FF41;
+  --input: #1a1a2e;
+  --ring: #00FFFF;
+  --chart-1: #00FFFF;
+  --chart-2: #FF006E;
+  --chart-3: #B300FF;
+  --chart-4: #00FF41;
+  --chart-5: #FFFF00;
+  --sidebar: #0a0a0a;
+  --sidebar-foreground: #00FF41;
+  --sidebar-accent: #B300FF;
+  --sidebar-accent-foreground: #00FF41;
+  --sidebar-border: #00FF41;
+  --sidebar-ring: #00FFFF;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  /**
+   * Custom container utility that centers content and adds responsive padding.
+   *
+   * This overrides Tailwind's default container behavior to:
+   * - Auto-center content (mx-auto)
+   * - Add responsive horizontal padding
+   * - Set max-width for large screens
+   *
+   * Usage: <div className="container">...</div>
+   *
+   * For custom widths, use max-w-* utilities directly:
+   * <div className="max-w-6xl mx-auto px-4">...</div>
+   */
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem; /* 16px - mobile padding */
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem; /* 24px - tablet padding */
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem; /* 32px - desktop padding */
+      padding-right: 2rem;
+      max-width: 1280px; /* Standard content width */
+    }
+  }
+}
+
+/* Cyberpunk Glitch Styles for Grok's Pickle */
+
+@layer components {
+  /* Glitch text effect */
+  .glitch-text {
+    position: relative;
+    display: inline-block;
+  }
+
+  .glitch-text::before,
+  .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .glitch-text::before {
+    animation: glitch-1 0.3s infinite;
+    color: #00FFFF;
+    z-index: -1;
+    text-shadow: -2px 0 #FF006E;
+  }
+
+  .glitch-text::after {
+    animation: glitch-2 0.3s infinite;
+    color: #B300FF;
+    z-index: -2;
+    text-shadow: 2px 0 #00FF41;
+  }
+
+  @keyframes glitch-1 {
+    0% {
+      clip-path: polygon(0 0, 100% 0, 100% 20%, 0 20%);
+      transform: translate(-2px, -2px);
+    }
+    20% {
+      clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%);
+      transform: translate(2px, 2px);
+    }
+    40% {
+      clip-path: polygon(0 40%, 100% 40%, 100% 60%, 0 60%);
+      transform: translate(-2px, 2px);
+    }
+    60% {
+      clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
+      transform: translate(2px, -2px);
+    }
+    80% {
+      clip-path: polygon(0 80%, 100% 80%, 100% 100%, 0 100%);
+      transform: translate(-2px, -2px);
+    }
+    100% {
+      clip-path: polygon(0 0, 100% 0, 100% 20%, 0 20%);
+      transform: translate(2px, 2px);
+    }
+  }
+
+  @keyframes glitch-2 {
+    0% {
+      clip-path: polygon(0 80%, 100% 80%, 100% 100%, 0 100%);
+      transform: translate(2px, 2px);
+    }
+    20% {
+      clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
+      transform: translate(-2px, -2px);
+    }
+    40% {
+      clip-path: polygon(0 40%, 100% 40%, 100% 60%, 0 60%);
+      transform: translate(2px, -2px);
+    }
+    60% {
+      clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%);
+      transform: translate(-2px, 2px);
+    }
+    80% {
+      clip-path: polygon(0 0, 100% 0, 100% 20%, 0 20%);
+      transform: translate(2px, 2px);
+    }
+    100% {
+      clip-path: polygon(0 80%, 100% 80%, 100% 100%, 0 100%);
+      transform: translate(-2px, -2px);
+    }
+  }
+
+  /* Neon glow effect */
+  .neon-glow {
+    text-shadow: 0 0 10px #00FF41, 0 0 20px #00FF41, 0 0 30px #00FF41, 0 0 40px #B300FF;
+    box-shadow: 0 0 10px #00FF41, 0 0 20px #00FF41, inset 0 0 10px rgba(0, 255, 65, 0.3);
+  }
+
+  .neon-glow-purple {
+    text-shadow: 0 0 10px #B300FF, 0 0 20px #B300FF, 0 0 30px #B300FF, 0 0 40px #00FF41;
+    box-shadow: 0 0 10px #B300FF, 0 0 20px #B300FF, inset 0 0 10px rgba(179, 0, 255, 0.3);
+  }
+
+  .neon-glow-cyan {
+    text-shadow: 0 0 10px #00FFFF, 0 0 20px #00FFFF, 0 0 30px #00FFFF, 0 0 40px #FF006E;
+    box-shadow: 0 0 10px #00FFFF, 0 0 20px #00FFFF, inset 0 0 10px rgba(0, 255, 255, 0.3);
+  }
+
+  /* Pixel distortion effect */
+  .pixel-distort {
+    background-image: 
+      repeating-linear-gradient(
+        0deg,
+        rgba(0, 255, 65, 0.03),
+        rgba(0, 255, 65, 0.03) 1px,
+        transparent 1px,
+        transparent 2px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        rgba(179, 0, 255, 0.03),
+        rgba(179, 0, 255, 0.03) 1px,
+        transparent 1px,
+        transparent 2px
+      );
+  }
+
+  /* Glitch border effect */
+  .glitch-border {
+    border: 2px solid #00FF41;
+    box-shadow: 
+      -3px -3px 0px #B300FF,
+      3px 3px 0px #00FFFF,
+      -6px -6px 0px rgba(255, 0, 110, 0.5),
+      6px 6px 0px rgba(255, 255, 0, 0.5);
+    position: relative;
+  }
+
+  /* Pulse glow animation */
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 10px #00FF41, 0 0 20px #00FF41, inset 0 0 10px rgba(0, 255, 65, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 20px #00FF41, 0 0 40px #00FF41, inset 0 0 20px rgba(0, 255, 65, 0.5);
+    }
+  }
+
+  .pulse-glow {
+    animation: pulse-glow 2s infinite;
+  }
+
+  /* Hover glow effect */
+  .hover-glow:hover {
+    text-shadow: 0 0 10px #00FF41, 0 0 20px #00FF41;
+    transition: text-shadow 0.3s ease;
+  }
+
+  /* Asymmetric section divider */
+  .section-divider {
+    position: relative;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+
+  .section-divider::before {
+    content: '';
+    position: absolute;
+    top: -2rem;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #00FF41, #B300FF, #00FFFF, #FF006E, transparent);
+  }
+
+  /* Staggered grid layout */
+  .stagger-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .stagger-grid > :nth-child(even) {
+    transform: translateY(2rem);
+  }
+
+  /* Floating animation */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .float-animation {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Glitch button effect */
+  .glitch-button {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glitch-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.3), transparent);
+    transition: left 0.5s;
+  }
+
+  .glitch-button:hover::before {
+    left: 100%;
+  }
+
+  /* Scanline effect */
+  .scanlines {
+    background-image: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.15),
+      rgba(0, 0, 0, 0.15) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+    background-size: 100% 2px;
+  }
+}
