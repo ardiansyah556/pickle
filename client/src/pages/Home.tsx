@@ -101,9 +101,9 @@ export default function Home() {
             </div>
 
             <div className="pt-8 space-y-2 text-sm text-muted-foreground">
-              <p>⚠️ This is a meme token</p>
-              <p>⚠️ The product never existed</p>
-              <p>⚠️ The rumor was funnier than the truth</p>
+              <p>Warning: This is a meme token</p>
+              <p>Warning: The product never existed</p>
+              <p>Warning: The rumor was funnier than the truth</p>
             </div>
           </div>
 
@@ -138,17 +138,17 @@ export default function Home() {
               {
                 title: "AI HALLUCINATIONS HAPPEN",
                 description: "Artificial intelligence confidently makes things up. It's not malicious. It's just how neural networks work.",
-                icon: "🤖",
+                icon: "Robot",
               },
               {
                 title: "INTERNET LOVES ABSURDITY",
                 description: "The more ridiculous something is, the faster it spreads. Memes > facts. Screenshots > reality.",
-                icon: "📱",
+                icon: "Mobile Phone",
               },
               {
                 title: "CRYPTO MONETIZES MEMES",
                 description: "Why just share a meme when you can tokenize it? $PICKLE is the perfect symbol of confident nonsense.",
-                icon: "💰",
+                icon: "Money Bag",
               },
             ].map((item, idx) => (
               <Card 
@@ -327,7 +327,7 @@ export default function Home() {
               className="group"
             >
               <Card className="bg-background border-primary/50 p-8 text-center space-y-4 hover:border-primary transition-colors cursor-pointer glitch-border">
-                <div className="text-5xl">💬</div>
+                <div className="text-5xl">Chat</div>
                 <h3 className="text-2xl font-bold text-primary neon-glow">TELEGRAM</h3>
                 <p className="text-muted-foreground">Join the community chat</p>
                 <div className="flex items-center justify-center gap-2 text-primary group-hover:text-secondary transition-colors">
@@ -344,7 +344,7 @@ export default function Home() {
               className="group"
             >
               <Card className="bg-background border-primary/50 p-8 text-center space-y-4 hover:border-primary transition-colors cursor-pointer glitch-border">
-                <div className="text-5xl">𝕏</div>
+                <div className="text-5xl">X</div>
                 <h3 className="text-2xl font-bold text-primary neon-glow">X / TWITTER</h3>
                 <p className="text-muted-foreground">Latest updates & memes</p>
                 <div className="flex items-center justify-center gap-2 text-primary group-hover:text-secondary transition-colors">
@@ -386,7 +386,7 @@ export default function Home() {
               </div>
               {subscribed && (
                 <p className="text-center text-primary neon-glow font-bold">
-                  ✓ Subscribed! Welcome to the pickle cult.
+                  Subscribed! Welcome to the pickle cult.
                 </p>
               )}
             </form>
@@ -398,7 +398,7 @@ export default function Home() {
       <section className="relative py-24 bg-card/50 pixel-distort">
         <div className="container max-w-3xl">
           <Card className="bg-background border-2 border-accent p-12 space-y-6">
-            <h2 className="text-3xl font-bold text-accent neon-glow-cyan">⚠️ DISCLAIMER</h2>
+            <h2 className="text-3xl font-bold text-accent neon-glow-cyan">Disclaimer</h2>
             
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>
